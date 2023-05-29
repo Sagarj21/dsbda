@@ -1,0 +1,25 @@
+  589  sudo nano word.txt
+  590  sudo nano mapper.py
+  591  sudo nano reducer.py
+  592  sudo nano mapper.py
+  593  chmod 777 mapper.py reducer.py 
+  594  cat word.txt
+////////////////////////// Running in Python ///////////////////////////////////////////////////
+  595  cat word.txt | python mapper.py
+  596  cat word.txt | python3 mapper.py
+  598  cat word.txt | python2 mapper.py
+  599  cat word.txt | python2 mapper.py | sort -k1,1 | python2 reducer.py
+///////////////////////////////////////////////////////////////////////////// Running on Hadoop//////////////////////////////
+
+  600  hadoop namenode -format
+  601  start-all.sh
+  616  jps
+  617  hdfs dfs -mkdir pymapex
+  618  hdfs dfs -mkdir /pymapex
+  619  hdfs dfs -ls /pymapex
+  620  hdfs dfs -put word.txt /pymapex
+  621  hdfs dfs -ls /pymapex
+633  hadoop jar /usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.7.3.jar  -mapper mapper.py -reducer reducer.py -input /pymapex/word.txt -output /out4
+  634  hadoop jar /usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.7.3.jar  -mapper "python2 mapper.py" -reducer "python2 reducer.py" -input /pymapex/word.txt -output /out5
+  635  hadoop fs -cat /out5/part-00000
+

@@ -1,0 +1,20 @@
+1  mkdir programs2
+2  mv log_file.txt programs2/
+3  javac -cp `hadoop classpath` -d programs2 SalesCountryDriver.java SalesCountryReducer.java SalesMapper.java
+4  cd programs2/
+5  ls
+6  jar -cvf programs2.jar -C programs2/ .
+
+7  hadoop fs -mkdir -p input_div
+8  hadoop fs -ls
+9  hadoop fs -put programs2/log_file.txt input_div
+10  hadoop fs -ls input_div
+
+11 hadoop jar programs2.jar SalesCountry.SalesCountryDriver input_div output_div
+
+
+  449  hadoop fs -ls output_div
+  451  hadoop fs -cat output_div/part-00000
+  452  history
+
+

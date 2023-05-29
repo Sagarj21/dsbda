@@ -1,0 +1,34 @@
+HIVE COMMANDS
+1) create database flightinfo;
+2) show databases;
+3) use flightinfo;
+4) create table delay(year int, delay int)
+   row format delimited
+   fields terminated by ',';
+5) desc delay; 
+
+create file airinfo containing text like 2009,80
+			       2008,78
+6) load data local inpath '/home/ninad/airinfo' into table delay;
+7) select * from delay;
+8) exit from hive
+9) hdfs dfs -mkdir /viman
+10) hdfs dfs -put airinfo /viman
+11) go to hive
+12) show databases;
+13) use flightinfo;
+14) select * from delay;
+
+
+18) create table delay1(year int, delay int)
+    row format delimited
+    fields terminated by ',';
+
+19) load data inpath '/viman/airinf' into table delay;
+20) select * from delay1;
+21) go to browser
+22) localhost:9870 (Just Type localhost in browser) 
+23) Then go to utilities and then go to log and check 'viman' file
+24) Table from hdfs to hive is called external table.
+
+
